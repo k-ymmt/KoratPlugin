@@ -17,6 +17,16 @@ public extension Disposable {
     }
 }
 
+public struct MobileDevice {
+    public let name: String?
+    public let udid: String
+    
+    public init(name: String?, udid: String) {
+        self.name = name
+        self.udid = udid
+    }
+}
+
 public struct DeviceEvent {
     public enum EventType {
         case add
@@ -26,6 +36,16 @@ public struct DeviceEvent {
     public enum ConnectionType {
         case usbmuxd
         case network
+    }
+    
+    public let device: MobileDevice
+    public let type: EventType
+    public let connectionType: ConnectionType
+    
+    public init(device: MobileDevice, type: EventType, connectionType: ConnectionType) {
+        self.device = device
+        self.type = type
+        self.connectionType = connectionType
     }
 }
 
