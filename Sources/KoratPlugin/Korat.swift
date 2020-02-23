@@ -50,7 +50,7 @@ public struct DeviceEvent {
 }
 
 public protocol MobileDeviceCenter {
-    func subscribeEvent(callback: @escaping (DeviceEvent) -> Void) -> Disposable
+    func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Disposable
     func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable
 }
 
