@@ -1,3 +1,7 @@
-struct KoratPlugin {
-    var text = "Hello, World!"
+import Foundation
+import AppKit
+
+public protocol KoratPlugin: NSObject {
+    init(korat: Korat)
+    func loadViewController() -> NSViewController
 }
