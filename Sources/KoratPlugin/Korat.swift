@@ -51,7 +51,7 @@ public struct DeviceEvent {
 
 public protocol MobileDeviceCenter {
     func subscribeEvent(callback: @escaping (DeviceEvent) -> Void) -> Disposable
-    func subscribeDeviceMessage(uuid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable
+    func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable
 }
 
 public class Korat {
