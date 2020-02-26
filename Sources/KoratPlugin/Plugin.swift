@@ -2,8 +2,8 @@ import Foundation
 import AppKit
 
 public protocol Plugin: NSObject {
-    var name: String { get  }
+    var name: String { get }
     
-    init(korat: Korat)
+    init(korat: KoratApp)
     func loadViewController() -> NSViewController
 }

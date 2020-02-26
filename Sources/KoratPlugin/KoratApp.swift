@@ -6,16 +6,7 @@
 //
 
 import Foundation
-
-public protocol Disposable {
-    func dispose()
-}
-
-public extension Disposable {
-    func callAsFunction() {
-        dispose()
-    }
-}
+import Combine
 
 public struct MobileDevice {
     public let name: String?
@@ -50,14 +41,14 @@ public struct DeviceEvent {
 }
 
 public protocol MobileDeviceCenter {
-    func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Disposable
-    func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Disposable
+    func subscribeEvent(callback: @escaping (Result<DeviceEvent, Error>) -> Void) -> Cancellable
+    func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Cancellable
 }
 
-public class Korat {
-    public let mobileDeviceCenter: MobileDeviceCenter
+public protocol KoratApp {
+    var mobileDeviceCenter: MobileDeviceCenter { get }
     
-    public init(mobileDeviceCenter: MobileDeviceCenter) {
-        self.mobileDeviceCenter = mobileDeviceCenter
-    }
+    func subscribeSelectedDeviceChanged(observer: @escaping (MobileDevice?) -> Void) -> Cancellable
+    
+    func selectDevice(_ device: MobileDevice?)
 }
