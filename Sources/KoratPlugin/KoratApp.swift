@@ -45,7 +45,7 @@ public protocol MobileDeviceCenter {
     func subscribeDeviceMessage(udid: String, id: String, callback: @escaping (Result<Data, Error>) -> Void) -> Cancellable
 }
 
-public protocol KoratApp {
+public protocol KoratAppProtocol {
     var mobileDeviceCenter: MobileDeviceCenter { get }
     
     func subscribeSelectedDeviceChanged(observer: @escaping (MobileDevice?) -> Void) -> Cancellable

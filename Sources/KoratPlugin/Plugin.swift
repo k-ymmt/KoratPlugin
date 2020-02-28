@@ -4,6 +4,6 @@ import AppKit
 public protocol Plugin: NSObject {
     var name: String { get }
     
-    init(korat: KoratApp)
+    init(korat: KoratAppProtocol)
     func loadViewController() -> NSViewController
 }
